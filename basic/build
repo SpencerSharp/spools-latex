@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+rm -rf *.png
+rm -rf *.pdf
+osascript -e 'quit app "Preview"'
+latex -shell-escape -interaction=nonstopmode Notes.tex
+dvipng -D 360 -T 6.5in,9.0in Notes.dvi -o display.png
+rm -rf *.aux
+rm -rf *.dvi
+rm -rf *.log
+rm -rf *.abc
+rm -rf *.eps
+rm -rf *.ps
+open display.png
